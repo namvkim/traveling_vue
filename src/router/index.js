@@ -3,6 +3,8 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Details from '../views/Details.vue'
 import NotFound from '../views/NotFound.vue'
+import Function from '../views/Function.vue'
+import SignUpForm from '../views/SignUpForm.vue'
 
 const routes = [
   {
@@ -20,6 +22,16 @@ const routes = [
     name: 'Details',
     component: Details,
     props: true
+  },
+  {
+    path: '/function',
+    name: 'Function',
+    component: Function,
+  },
+  {
+    path: '/signup',
+    name: 'SignUpForm',
+    component: SignUpForm,
   },
 
   //redirect
