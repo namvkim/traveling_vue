@@ -5,12 +5,42 @@ import Details from '../views/Details.vue'
 import NotFound from '../views/NotFound.vue'
 import Function from '../views/Function.vue'
 import SignUpForm from '../views/SignUpForm.vue'
+import Schedule from '../views/Schedule.vue'
+import Friend from '../views/Friend.vue'
+import Message from '../views/Message.vue'
+import Notificate from '../views/Notificate.vue'
+import Personal from '../views/Personal.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/personal',
+    name: 'Personal',
+    component: Personal
+  },
+  {
+    path: '/schedule',
+    name: 'Schedule',
+    component: Schedule
+  },
+  {
+    path: '/friend',
+    name: 'Friend',
+    component: Friend
+  },
+  {
+    path: '/message',
+    name: 'Message',
+    component: Message
+  },
+  {
+    path: '/notificate',
+    name: 'Notificate',
+    component: Notificate
   },
   {
     path: '/about',
