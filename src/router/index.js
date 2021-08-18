@@ -10,6 +10,8 @@ import Friend from '../views/Friend.vue'
 import Message from '../views/Message.vue'
 import Notificate from '../views/Notificate.vue'
 import Personal from '../views/Personal.vue'
+import Search from '../views/Search.vue'
+import Multitasking from '../views/Multitasking.vue'
 
 const routes = [
   {
@@ -26,6 +28,16 @@ const routes = [
     path: '/schedule',
     name: 'Schedule',
     component: Schedule
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: Search
+  },
+  {
+    path: '/multitasking',
+    name: 'Multitasking',
+    component: Multitasking
   },
   {
     path: '/friend',

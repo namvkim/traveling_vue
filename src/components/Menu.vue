@@ -13,9 +13,10 @@
         </div>
         <div class="index__search">
           <input type="text" placeholder="Search in Traveling" />
-          <i class="fas fa-search"></i>
-          <label for="checkbox" class="btn"><i class="fas fa-bars"></i></label>
-          <input type="checkbox" id="checkbox" />
+          <router-link to="/search"><i class="fas fa-search"></i></router-link>
+          <router-link to="/multitasking"
+            ><i class="fas fa-bars"></i
+          ></router-link>
         </div>
       </div>
       <div class="index__block__2">
@@ -175,8 +176,8 @@ i {
   align-items: center;
 }
 
-.index__search label {
-  margin-left: 10px;
+.index__search a {
+  margin-left: 20px;
 }
 
 .index__search input {
@@ -189,6 +190,9 @@ i {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.index__block__2 a.router-link-exact-active i {
+  color: rgb(16, 195, 207);
 }
 
 .index__block__3,
@@ -226,7 +230,7 @@ i {
   .index__search input[type="text"] {
     font-size: 16px;
     width: 200px;
-    padding: 10px 15px;
+    padding: 11px 15px;
     margin-left: 20px;
     border-radius: 19px;
 
@@ -248,6 +252,7 @@ i {
   .index__block__2 {
     display: none;
   }
+
   .index__block__3 {
     display: flex;
     align-items: center;
@@ -301,7 +306,7 @@ i {
     border-radius: 20px;
   }
   .index__user span {
-    padding: 0 3px;
+    padding: 0 5px;
     width: auto;
     font-weight: 600;
     color: black;
@@ -310,7 +315,7 @@ i {
     display: none;
     position: absolute;
     top: 46px;
-    right: 20px;
+    right: 0px;
     border-radius: 6px;
     padding: 5px;
     width: 360px;
@@ -327,52 +332,6 @@ i {
 
   .index__toggleDown--show {
     display: block;
-  }
-}
-
-@media (max-width: 600px) {
-  .index_menu .btn {
-    display: block;
-  }
-
-  .index_menu {
-    height: 55px;
-  }
-
-  .index_menu .logo span,
-  .index_menu .tab .space {
-    display: none;
-  }
-
-  .index_menu .search input {
-    width: 175px;
-  }
-
-  .index_menu .search button {
-    width: 50px;
-  }
-
-  .index_menu .tab {
-    position: absolute;
-    display: block;
-    width: 100%;
-    background-color: rgb(253, 253, 253);
-    height: 0px;
-    transition: all 0.3s ease-in;
-    overflow-y: hidden;
-    top: 55px;
-    left: 0px;
-  }
-
-  .index_menu .item {
-    display: block;
-    width: 100%;
-    padding: 10px 20px;
-  }
-
-  .index_menu #checkbox:checked ~ .tab {
-    height: calc(100vh - 55px);
-    overflow-y: auto;
   }
 }
 </style>
