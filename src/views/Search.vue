@@ -40,9 +40,9 @@ export default {};
   outline: none;
 }
 
-.search__header__box input:focus ~ .search__icon {
+/* .search__header__box input:focus ~ .search__icon {
   display: block;
-}
+} */
 
 .search__back {
   position: absolute;
@@ -51,6 +51,6 @@ export default {};
 .search__icon {
   position: absolute;
   right: 20px;
-  display: none;
+  /* display: none; */
 }
 </style>

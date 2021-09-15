@@ -1,12 +1,12 @@
 <template>
   <Menu />
-  <h2>details page {{ id }}</h2>
+  <p>this is personal friend</p>
 </template>
 
 <script>
 import Menu from "@/components/Menu.vue";
+
 export default {
-  props: ["id"],
   components: {
     Menu,
   },
@@ -14,7 +14,7 @@ export default {
 </script>
 
 <style scoped>
-h2 {
+p {
   margin-top: 200px;
 }
 </style>

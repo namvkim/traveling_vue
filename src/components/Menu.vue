@@ -43,7 +43,7 @@
           <img
             src="https://marum.vn/data/avatars/o/0/14.jpg?1604292865"
             alt="avatar"
-          /><span>le son nam</span>
+          /><span>{{ obj.name }}</span>
         </router-link>
         <span :class="{ 'index__block__4--light': toggleDown === 'friend' }">
           <i
@@ -57,8 +57,25 @@
               'index__toggleDown--show ': toggleDown === 'friend',
             }"
           >
-            <div>abc</div>
-            <div>xyz</div>
+            <router-link to="/personalfriend" class="index__message">
+              <img
+                src="https://nhattientuu.com/wp-content/uploads/2020/08/hinh-anh-cute-74.jpg"
+                alt=""
+              />
+              <div>
+                <div class="index__name">le son nam</div>
+                <div class="index__message__box">
+                  <div class="index__message__content">
+                    kết bạn với mình nhé
+                  </div>
+                  <div class="index__message__time">- 355 minutes</div>
+                </div>
+              </div>
+              <div class="message__button">
+                <div class="message__button__accept">Accept</div>
+                <div class="message__button__cancel">Cancel</div>
+              </div>
+            </router-link>
           </div>
         </span>
         <span :class="{ 'index__block__4--light': toggleDown === 'comment' }">
@@ -71,8 +88,36 @@
             class="index__toggleDown"
             :class="{ 'index__toggleDown--show': toggleDown === 'comment' }"
           >
-            <div>abc comment</div>
-            <div>xyz</div>
+            <router-link to="/personalfriend" class="index__message">
+              <img
+                src="https://nhattientuu.com/wp-content/uploads/2020/08/hinh-anh-cute-74.jpg"
+                alt=""
+              />
+              <div>
+                <div class="index__name">le son nam</div>
+                <div class="index__message__box">
+                  <div class="index__message__content">
+                    ahihi sdfsdfsdfahihi sdfsdfsdfahihi sdfsdfsdf
+                  </div>
+                  <div class="index__message__time">- 355 minutes</div>
+                </div>
+              </div>
+            </router-link>
+            <router-link to="/personalfriend" class="index__message">
+              <img
+                src="https://nhattientuu.com/wp-content/uploads/2020/08/hinh-anh-cute-74.jpg"
+                alt=""
+              />
+              <div>
+                <div class="index__name">le son nam</div>
+                <div class="index__message__box">
+                  <div class="index__message__content">
+                    ahihi sdfsdfsdfahihi
+                  </div>
+                  <div class="index__message__time">- 5 years</div>
+                </div>
+              </div>
+            </router-link>
           </div>
         </span>
         <span
@@ -101,8 +146,9 @@
               'index__toggleDown--show': toggleDown === 'multitasking',
             }"
           >
-            <div>abc multitasking</div>
-            <div>xyz</div>
+            <div @click="logout" class="index__multitasking__item">
+              <i class="fas fa-sign-out-alt"></i>Logout
+            </div>
           </div>
         </span>
       </div>
@@ -111,6 +157,7 @@
 </template>
 
 <script>
+import router from "../router/index";
 export default {
   data() {
     return {
@@ -125,6 +172,19 @@ export default {
         this.toggleDown = e.target.id;
       }
     },
+    logout() {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("tokenType");
+      router.push("/login");
+    },
+  },
+  computed: {
+    obj() {
+      return this.$store.state.menu.obj;
+    },
+  },
+  mounted() {
+    this.$store.dispatch("getMyUser");
   },
 };
 </script>
@@ -141,6 +201,7 @@ i {
   background-color: antiquewhite;
   display: flex;
   align-items: center;
+  box-shadow: 1px 3px 5px rgba(128, 128, 128, 0.123);
 
   position: fixed;
   top: 0;
@@ -153,7 +214,7 @@ i {
 }
 
 .index__block__1 {
-  height: 50px;
+  height: 40px;
 
   display: flex;
   justify-content: space-between;
@@ -185,7 +246,7 @@ i {
 }
 
 .index__block__2 {
-  height: 50px;
+  height: 40px;
 
   display: flex;
   align-items: center;
@@ -290,7 +351,7 @@ i {
     justify-content: center;
   }
   .index__block__4--light {
-    background-color: rgb(109, 194, 53) !important;
+    background-color: rgb(186, 226, 43) !important;
   }
   .index__user {
     display: flex;
@@ -299,7 +360,7 @@ i {
     margin: 0 3px;
   }
   .index__user:hover {
-    background-color: blueviolet;
+    background-color: rgb(186, 226, 43);
   }
   .index__user img {
     height: 40px;
@@ -311,6 +372,9 @@ i {
     font-weight: 600;
     color: black;
   }
+  .index__user.router-link-exact-active {
+    background-color: rgb(186, 226, 43);
+  }
   .index__toggleDown {
     display: none;
     position: absolute;
@@ -318,20 +382,73 @@ i {
     right: 0px;
     border-radius: 6px;
     padding: 5px;
-    width: 360px;
-    background-color: aqua;
+    width: 380px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background-color: rgb(224, 224, 224);
   }
-  .index__toggleDown div {
-    padding: 5px 10px;
+
+  .index__toggleDown > a {
+    padding: 10px 10px;
     border-radius: 4px;
   }
 
-  .index__toggleDown div:hover {
+  .index__toggleDown a:hover {
     background-color: antiquewhite;
   }
 
   .index__toggleDown--show {
     display: block;
+  }
+
+  .index__message {
+    display: flex;
+    align-items: center;
+  }
+  .index__message img {
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+  }
+  .index__message > div {
+    margin-left: 10px;
+    color: black;
+  }
+  .index__name {
+    padding: 0;
+    font-size: 16px;
+  }
+  .index__message__box {
+    padding: 0;
+    margin-top: 5px;
+    font-size: 14px;
+    display: flex;
+  }
+  .index__message__content {
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .index__message__time {
+    margin-left: 5px;
+  }
+  .message__button__accept {
+    padding: 8px;
+    background-color: blanchedalmond;
+  }
+  .index__multitasking__item {
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+  }
+  .index__multitasking__item i {
+    margin-right: 5px;
+  }
+  .index__multitasking__item:hover {
+    cursor: pointer;
+    background-color: wheat;
   }
 }
 </style>

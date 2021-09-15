@@ -8,11 +8,30 @@
       <i class="fas fa-search search__icon"></i>
     </div>
   </div>
-  <div class="search__content"></div>
+  <div class="search__content">
+    <div class="multitasking__item" @click="personal">
+      <i class="fas fa-user"></i>Personal page
+    </div>
+    <div class="multitasking__item" @click="logout">
+      <i class="fas fa-sign-out-alt"></i>Logout
+    </div>
+  </div>
 </template>
 
 <script>
-export default {};
+import router from "../router/index";
+export default {
+  methods: {
+    personal() {
+      router.push("/personal");
+    },
+    logout() {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("tokenType");
+      router.push("/");
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -21,6 +40,7 @@ export default {};
   height: 50px;
   position: fixed;
   display: flex;
+  top: 0;
   align-items: center;
   border-bottom: 1px solid grey;
   background: #fff;
@@ -52,5 +72,16 @@ export default {};
   position: absolute;
   right: 20px;
   display: none;
+}
+.search__content {
+  margin-top: 60px;
+}
+.multitasking__item {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+.multitasking__item i {
+  margin-right: 5px;
 }
 </style>

@@ -1,14 +1,8 @@
 <template>
   <div class="signup__container">
     <div class="signup__content">
-      <form @submit.prevent="handleSubmit">
-        <div class="signup__title">Sign Up</div>
-        <input
-          type="text"
-          placeholder="Full name"
-          v-model="fullname"
-          required
-        />
+      <form @submit.prevent="onSubmit">
+        <div class="signup__title">Login</div>
         <input
           type="text"
           placeholder="User name"
@@ -21,18 +15,10 @@
           v-model="password"
           required
         />
-        <input
-          type="password"
-          placeholder="Confirm password"
-          v-model="comfirm"
-          required
-        />
-        <input type="number" placeholder="Phone" v-model="phone" />
-        <input type="text" placeholder="Address" v-model="address" />
-        <input type="submit" value="Sign up" />
+        <input type="submit" value="Login" />
         <div class="signup__note">
-          If you already have an account!
-          <router-link to="/login">Login</router-link>
+          You don't have an account?
+          <router-link to="/signup">Sign up</router-link>
         </div>
       </form>
     </div>
@@ -43,30 +29,19 @@
 export default {
   data() {
     return {
-      fullname: "",
       username: "",
       password: "",
-      comfirm: "",
-      phone: "",
-      address: "",
     };
   },
   methods: {
-    handleSubmit() {
-      if (this.password === this.comfirm) {
-        this.$store.dispatch("postSignUp", {
-          name: this.fullname,
-          username: this.username,
-          password: this.password,
-          phone: this.phone,
-          address: this.address,
-          role: ["USER"],
-        });
-      } else {
-        alert("Passwords dont match!!!");
-      }
+    onSubmit() {
+      this.$store.dispatch("postLogin", {
+        username: this.username,
+        password: this.password,
+      });
     },
   },
+  computed: {},
 };
 </script>
 
@@ -84,6 +59,7 @@ export default {
   background-color: rgba(85, 85, 85, 0.322);
   border: 1px solid rgba(189, 182, 182, 0.185);
   border-radius: 8px;
+  margin-bottom: 100px;
 }
 
 .signup__content form {
@@ -123,7 +99,7 @@ export default {
 }
 @media (min-width: 768px) {
   .signup__content {
-    margin-bottom: 80px;
+    margin-bottom: 200px;
   }
 }
 </style>
